@@ -1,0 +1,52 @@
+
+/* === La Ruche — logo + page Rencontres === */
+.core{overflow:hidden}
+.core img{
+  width:128%;
+  height:128%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 14px 30px rgba(255,174,0,.28));
+}
+.encounter-home-card{cursor:pointer}
+.encounter-home-card .encounter-link{
+  display:inline-flex;
+  margin-top:18px;
+  color:var(--gold);
+  font-weight:850;
+  font-size:14px;
+}
+@media(max-width:600px){
+  .core img{
+    width:132%;
+    height:132%;
+  }
+}
+
+
+/* Logo officiel dans l'en-tête */
+.brand-mark.logo-mark{
+  padding:0;
+  overflow:hidden;
+  background:#ffc629;
+  display:grid;
+  place-items:center;
+}
+.brand-mark.logo-mark img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.22));
+}
+@media(max-width:600px){
+  .brand-mark.logo-mark{
+    width:58px;
+    height:58px;
+    border-radius:17px;
+  }
+  .brand-mark.logo-mark img{
+    width:100%;
+    height:100%;
+  }
+}
