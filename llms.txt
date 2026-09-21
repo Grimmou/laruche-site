@@ -1,0 +1,15 @@
+# La Ruche
+
+La Ruche est une communauté française et un espace de services autour de Discord.
+
+## Communauté
+La Ruche propose un espace pour discuter, rencontrer de nouvelles personnes, jouer et participer à des activités communautaires.
+
+## Services
+La Ruche propose des services de création, configuration, bots, design, sécurité, optimisation et maintenance de serveurs Discord.
+
+## Pages principales
+- https://laruche.pages.dev/
+- https://laruche.pages.dev/communaute.html
+- https://laruche.pages.dev/services.html
+- https://laruche.pages.dev/conseils.html
