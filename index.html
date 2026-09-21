@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    La Ruche — Communauté Discord française, rencontres & services Discord
+  </title>
+
+  <meta
+    name="description"
+    content="La Ruche est une communauté Discord française pour discuter, rencontrer du monde, faire des rencontres, jouer ensemble et participer à des activités communautaires. Découvrez aussi nos services de création, bots, design, sécurité et optimisation Discord."
+  >
+
+  <meta
+    name="keywords"
+    content="serveur Discord français, communauté Discord, serveur Discord rencontre, serveur Discord amis, rencontres Discord, discussion Discord, serveur Discord jeux, bot Discord, création serveur Discord, configuration Discord, design Discord, sécurité Discord"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="author" content="La Ruche">
+
+  <link
+    rel="canonical"
+    href="https://laruche.raphael-etienne68.workers.dev/"
+  >
+
+  <!-- Open Graph -->
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="La Ruche — Communauté Discord française"
+  >
+
+  <meta
+    property="og:description"
+    content="Une communauté Discord française pour discuter, rencontrer du monde, jouer ensemble et créer des liens. La Ruche propose également des services Discord."
+  >
+
+  <meta
+    property="og:url"
+    content="https://laruche.raphael-etienne68.workers.dev/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="La Ruche"
+  >
+
+  <meta
+    property="og:image"
+    content="https://laruche.raphael-etienne68.workers.dev/assets/laruche-logo.png"
+  >
+
+  <meta
+    property="og:locale"
+    content="fr_FR"
+  >
+
+  <!-- Twitter / X -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="La Ruche — Communauté Discord française"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Rejoins La Ruche, une communauté Discord française dédiée aux discussions, rencontres, jeux et échanges."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://laruche.raphael-etienne68.workers.dev/assets/laruche-logo.png"
+  >
+
+  <!-- JSON-LD : Organisation -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "La Ruche",
+    "url": "https://laruche.raphael-etienne68.workers.dev/",
+    "logo": "https://laruche.raphael-etienne68.workers.dev/assets/laruche-logo.png",
+    "description": "La Ruche est une communauté Discord française dédiée aux discussions, rencontres, jeux et échanges, avec également des services spécialisés pour les serveurs Discord."
+  }
+  </script>
+
+  <!-- JSON-LD : WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "La Ruche",
+    "url": "https://laruche.raphael-etienne68.workers.dev/",
+    "inLanguage": "fr-FR"
+  }
+  </script>
+
+  <!-- JSON-LD : FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que La Ruche ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Ruche est une communauté Discord française permettant de discuter, rencontrer de nouvelles personnes, jouer ensemble et participer à différentes activités communautaires."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment rejoindre La Ruche ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Ruche est accessible directement depuis Discord. Il suffit de rejoindre le serveur grâce au lien d'invitation disponible sur le site."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La Ruche propose-t-elle un système de rencontres ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. La Ruche possède un système Match & Rencontre permettant de créer un profil, découvrir d'autres membres, envoyer des likes et créer des matchs réciproques."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on discuter en privé avec un match ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Lorsqu'un intérêt est réciproque, un espace de discussion privé peut être créé entre les deux membres concernés."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La Ruche propose-t-elle des services Discord ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. La Ruche propose notamment des services de création, configuration, développement de bots, design, sécurité, optimisation et maintenance de serveurs Discord."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #080706;
+      --bg-soft: #11100d;
+      --card: #15130f;
+      --card-hover: #1b1812;
+      --gold: #f5c542;
+      --gold-light: #ffe38a;
+      --text: #f7f4ec;
+      --muted: #aaa49a;
+      --border: rgba(245, 197, 66, 0.18);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(245, 197, 66, 0.10),
+          transparent 35%
+        ),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 7, 6, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: var(--gold);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #c7c1b6;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .desktop-nav a {
+      transition: color .2s ease;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--gold);
+    }
+
+    .discord-button {
+      background: var(--gold);
+      color: #171208;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: transform .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+
+    .discord-button:hover {
+      transform: translateY(-2px);
+      background: var(--gold-light);
+    }
+
+    .menu-button {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 0;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 90px 0 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      background: rgba(245, 197, 66, 0.09);
+      filter: blur(100px);
+      border-radius: 50%;
+      top: -250px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(245,197,66,.05);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: auto;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-logo {
+      width: 180px;
+      height: 180px;
+      margin: 55px auto 0;
+      border-radius: 40px;
+      background: var(--gold);
+      padding: 14px;
+      box-shadow:
+        0 0 70px rgba(245,197,66,.20),
+        0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .secondary-button {
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      color: #eee9df;
+      background: rgba(255,255,255,.035);
+      font-weight: 700;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      margin-bottom: 18px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* =========================
+       COMMUNITY
+    ========================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        );
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,197,66,.38);
+    }
+
+    .card-number {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin: 25px 0 15px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       RENCONTRES
+    ========================= */
+
+    .encounter-section {
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(245,197,66,.035),
+          transparent
+        );
+    }
+
+    .encounter-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .encounter-main {
+      background: linear-gradient(
+        145deg,
+        rgba(245,197,66,.10),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid rgba(245,197,66,.25);
+      border-radius: 28px;
+      padding: 38px;
+    }
+
+    .encounter-main h3 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .encounter-main p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .encounter-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .encounter-list li {
+      display: flex;
+      gap: 10px;
+      color: #ddd7cb;
+    }
+
+    .encounter-list span {
+      color: var(--gold);
+    }
+
+    .encounter-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .encounter-mini {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .encounter-mini h4 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .encounter-mini p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .learn-more {
+      display: inline-flex;
+      margin-top: 25px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .service {
+      padding: 25px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 18px;
+    }
+
+    .service h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       SEO CONTENT
+    ========================= */
+
+    .seo-content {
+      max-width: 850px;
+    }
+
+    .seo-content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .seo-content h3 {
+      margin-top: 35px;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .seo-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq {
+      max-width: 850px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 22px 0;
+    }
+
+    .faq-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      text-align: center;
+      padding: 100px 30px;
+      border: 1px solid rgba(245,197,66,.22);
+      border-radius: 30px;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(245,197,66,.10),
+          transparent 65%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 55px);
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+    }
+
+    .cta .discord-button {
+      display: inline-block;
+      margin-top: 28px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 40px 0;
+      color: #888177;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    .mobile-menu {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: #0b0a08;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      color: #ddd7cb;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav .discord-button {
+        display: none;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .encounter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--max-width)
+        );
+      }
+
+      .nav {
+        height: 68px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-logo {
+        width: 145px;
+        height: 145px;
+        border-radius: 32px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .encounter-main {
+        padding: 27px;
+      }
+
+      .encounter-main h3 {
+        font-size: 27px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="/"
+        class="brand"
+        aria-label="Accueil La Ruche"
+      >
+
+        <span class="brand-mark">
+          <img
+            src="/assets/laruche-logo.png"
+            alt="Logo La Ruche"
+            width="1254"
+            height="1254"
+          >
+        </span>
+
+        <span>LA RUCHE</span>
+
+      </a>
+
+      <nav
+        class="desktop-nav"
+        aria-label="Navigation principale"
+      >
+
+        <a href="/">Accueil</a>
+
+        <a href="#communaute">
+          Communauté
+        </a>
+
+        <a href="/rencontres.html">
+          Rencontres
+        </a>
+
+        <a href="#services">
+          Services
+        </a>
+
+        <a href="#conseils">
+          Conseils
+        </a>
+
+      </nav>
+
+      <a
+        class="discord-button"
+        href="https://discord.gg/laruche"
+        target="_blank"
+        rel="noopener"
+      >
+        Rejoindre Discord
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+    <nav
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-label="Navigation mobile"
+    >
+
+      <a href="/">
+        Accueil
+      </a>
+
+      <a href="#communaute">
+        Communauté
+      </a>
+
+      <a href="/rencontres.html">
+        Rencontres
+      </a>
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#conseils">
+        Conseils
+      </a>
+
+      <a
+        href="https://discord.gg/laruche"
+        target="_blank"
+        rel="noopener"
+      >
+        Rejoindre La Ruche sur Discord →
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-badge">
+          🐝 Communauté Discord française
+        </div>
+
+        <h1>
+          Bienvenue dans
+          <span>La Ruche.</span>
+        </h1>
+
+        <p class="hero-description">
+          Un serveur Discord français pour discuter,
+          rencontrer de nouvelles personnes, jouer ensemble,
+          partager, créer des liens et participer à une véritable
+          communauté.
+        </p>
+
+        <div class="hero-logo">
+          <img
+            src="/assets/laruche-logo.png"
+            alt="Logo officiel de La Ruche"
+            width="1254"
+            height="1254"
+          >
+        </div>
+
+        <div class="hero-actions">
+
+          <a
+            class="discord-button"
+            href="https://discord.gg/laruche"
+            target="_blank"
+            rel="noopener"
+          >
+            Rejoindre La Ruche
+          </a>
+
+          <a
+            class="secondary-button"
+            href="#communaute"
+          >
+            Découvrir la communauté
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMMUNAUTÉ
+    ========================== -->
+
+    <section id="communaute">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="eyebrow">
+            La communauté
+          </div>
+
+          <h2>
+            Un endroit pour trouver sa place.
+          </h2>
+
+          <p>
+            La Ruche est une communauté Discord française pensée
+            pour les échanges, les rencontres, les discussions,
+            les jeux et les moments partagés entre membres.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="card-number">
+              01
+            </div>
+
+            <div class="card-icon">
+              💬
+            </div>
+
+            <h3>
+              Discuter
+            </h3>
+
+            <p>
+              Partage tes passions, discute de ton quotidien,
+              participe aux conversations et échange avec les
+              autres membres de La Ruche.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              02
+            </div>
+
+            <div class="card-icon">
+              🤝
+            </div>
+
+            <h3>
+              Rencontrer
+            </h3>
+
+            <p>
+              Découvre de nouvelles personnes grâce aux espaces
+              communautaires et au système Match & Rencontre
+              intégré au serveur.
+            </p>
+
+            <a
+              class="learn-more"
+              href="/rencontres.html"
+            >
+              Découvrir les rencontres →
+            </a>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              03
+            </div>
+
+            <div class="card-icon">
+              🎮
+            </div>
+
+            <h3>
+              Jouer ensemble
+            </h3>
+
+            <p>
+              Jeux, activités communautaires et moments
+              partagés : La Ruche permet aussi de se retrouver
+              autour de différentes activités.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         RENCONTRES
+    ========================== -->
+
+    <section
+      class="encounter-section"
+      id="rencontres"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="eyebrow">
+            Match & Rencontre
+          </div>
+
+          <h2>
+            Faire connaissance autrement.
+          </h2>
+
+          <p>
+            La Ruche dispose d'un système de rencontre permettant
+            aux membres de créer leur profil, découvrir d'autres
+            personnes, envoyer des likes et créer des matchs
+            lorsqu'un intérêt est réciproque.
+          </p>
+
+        </div>
+
+
+        <div class="encounter-grid">
+
+          <div class="encounter-main">
+
+            <h3>
+              💛 Un système de rencontre directement sur Discord
+            </h3>
+
+            <p>
+              Pas besoin de quitter le serveur pour faire de
+              nouvelles connaissances. Le système Match &
+              Rencontre centralise les profils, les likes,
+              les matchs et les discussions privées.
+            </p>
+
+            <ul class="encounter-list">
+
+              <li>
+                <span>✓</span>
+                Crée ton profil de rencontre.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Découvre les profils des autres membres.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Utilise la Rencontre rapide.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Réponds au questionnaire Âme sœur.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Envoie des likes avec `/like`.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Obtiens un match lorsque l'intérêt est réciproque.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Discute en privé avec ton match.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Remonte ton profil grâce à `/bump`.
+              </li>
+
+            </ul>
+
+            <a
+              class="learn-more"
+              href="/rencontres.html"
+            >
+              Voir le fonctionnement complet →
+            </a>
+
+          </div>
+
+
+          <div class="encounter-side">
+
+            <article class="encounter-mini">
+
+              <h4>
+                💛 Rencontre rapide
+              </h4>
+
+              <p>
+                Une manière simple de présenter ton profil
+                et de faire connaissance avec d'autres membres.
+              </p>
+
+            </article>
+
+
+            <article class="encounter-mini">
+
+              <h4>
+                💫 Âme sœur
+              </h4>
+
+              <p>
+                Un questionnaire plus approfondi permet
+                d'obtenir des propositions correspondant
+                davantage à ton profil.
+              </p>
+
+            </article>
+
+
+            <article class="encounter-mini">
+
+              <h4>
+                ❤️ Likes & Matchs
+              </h4>
+
+              <p>
+                Découvre les personnes qui t'intéressent,
+                envoie un like et crée un match lorsque
+                l'intérêt est partagé.
+              </p>
+
+            </article>
+
+
+            <article class="encounter-mini">
+
+              <h4>
+                💬 Discussions privées
+              </h4>
+
+              <p>
+                Lorsqu'un match est créé, une discussion
+                privée peut permettre aux deux membres
+                d'échanger tranquillement.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section id="services">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="eyebrow">
+            Services Discord
+          </div>
+
+          <h2>
+            Nous construisons aussi des serveurs Discord.
+          </h2>
+
+          <p>
+            La Ruche ne se limite pas à sa communauté.
+            Nous proposons également des services pour les
+            créateurs, communautés et projets qui souhaitent
+            disposer d'un serveur Discord propre, sécurisé
+            et adapté à leurs besoins.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <article class="service">
+
+            <h3>
+              🛠️ Création
+            </h3>
+
+            <p>
+              Création complète de serveurs Discord
+              personnalisés.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              ⚙️ Configuration
+            </h3>
+
+            <p>
+              Organisation des salons, rôles,
+              permissions et paramètres.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              🤖 Bots Discord
+            </h3>
+
+            <p>
+              Développement et intégration de bots
+              adaptés aux besoins du serveur.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              🎨 Design
+            </h3>
+
+            <p>
+              Identité visuelle, emojis, icônes,
+              embeds et éléments graphiques.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              🔐 Sécurité
+            </h3>
+
+            <p>
+              Protection du serveur, permissions,
+              modération et prévention des abus.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              🚀 Optimisation
+            </h3>
+
+            <p>
+              Amélioration de l'organisation et de
+              l'expérience des membres.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              🔧 Maintenance
+            </h3>
+
+            <p>
+              Évolution, corrections et suivi du
+              serveur dans le temps.
+            </p>
+
+          </article>
+
+
+          <article class="service">
+
+            <h3>
+              📊 Accompagnement
+            </h3>
+
+            <p>
+              Conseils pour développer et structurer
+              une communauté Discord.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONSEILS / SEO CONTENT
+    ========================== -->
+
+    <section id="conseils">
+
+      <div class="container">
+
+        <div class="seo-content">
+
+          <div class="eyebrow">
+            Conseils Discord
+          </div>
+
+          <h2>
+            Créer et développer une communauté Discord
+          </h2>
+
+          <p>
+            Créer un serveur Discord ne consiste pas simplement
+            à ouvrir quelques salons et à ajouter des rôles.
+            Une communauté efficace doit être organisée,
+            compréhensible pour les nouveaux membres et agréable
+            à utiliser au quotidien.
+          </p>
+
+          <h3>
+            Comment créer un serveur Discord français ?
+          </h3>
+
+          <p>
+            La première étape consiste à définir l'objectif du
+            serveur : discussion, rencontres, jeux, communauté
+            autour d'une passion, projet professionnel ou espace
+            privé. L'organisation des salons et des rôles doit
+            ensuite correspondre à cet objectif.
+          </p>
+
+          <h3>
+            Comment attirer de nouveaux membres ?
+          </h3>
+
+          <p>
+            Une communauté Discord doit proposer une véritable
+            raison de rester. Des espaces de discussion actifs,
+            des activités régulières, des rencontres entre
+            membres et une organisation claire peuvent contribuer
+            à créer une expérience communautaire durable.
+          </p>
+
+          <h3>
+            Pourquoi sécuriser un serveur Discord ?
+          </h3>
+
+          <p>
+            Les permissions, les rôles, la modération et les
+            protections contre les abus sont des éléments
+            essentiels d'un serveur public. Une bonne configuration
+            permet notamment de limiter les actions dangereuses
+            tout en conservant une expérience simple pour les
+            membres.
+          </p>
+
+          <h3>
+            Pourquoi utiliser un bot Discord ?
+          </h3>
+
+          <p>
+            Les bots permettent d'automatiser de nombreuses
+            tâches : modération, tickets, notifications,
+            rôles automatiques, statistiques, rappels,
+            événements, jeux et systèmes communautaires.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="eyebrow">
+            Questions fréquentes
+          </div>
+
+          <h2>
+            La Ruche en quelques réponses.
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+          <article class="faq-item">
+
+            <h3>
+              Qu'est-ce que La Ruche ?
+            </h3>
+
+            <p>
+              La Ruche est une communauté Discord française
+              dédiée aux discussions, aux rencontres, aux jeux
+              et aux échanges entre membres.
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Comment rejoindre La Ruche ?
+            </h3>
+
+            <p>
+              Il suffit de rejoindre notre serveur Discord
+              grâce au bouton disponible sur cette page.
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Peut-on faire des rencontres sur La Ruche ?
+            </h3>
+
+            <p>
+              Oui. Le serveur dispose d'un système Match &
+              Rencontre avec profils, likes, matchs et
+              discussions privées.
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Les rencontres sont-elles directement intégrées à Discord ?
+            </h3>
+
+            <p>
+              Oui. Le système fonctionne directement dans
+              l'environnement Discord de La Ruche.
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Proposez-vous des services pour d'autres serveurs Discord ?
+            </h3>
+
+            <p>
+              Oui. La Ruche propose des prestations de création,
+              configuration, bots, design, sécurité, optimisation
+              et maintenance Discord.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="cta">
+
+          <h2>
+            Rejoins la Ruche 🐝
+          </h2>
+
+          <p>
+            Discute, rencontre de nouvelles personnes,
+            participe aux activités et découvre tout ce que
+            la communauté peut proposer.
+          </p>
+
+          <a
+            class="discord-button"
+            href="https://discord.gg/laruche"
+            target="_blank"
+            rel="noopener"
+          >
+            Rejoindre le serveur Discord
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 La Ruche — Communauté Discord française
+      </div>
+
+      <div>
+        Communauté · Rencontres · Services Discord
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", () => {
+
+      const isOpen =
+        mobileMenu.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen
+      );
+
+      menuButton.textContent =
+        isOpen ? "✕" : "☰";
+
+    });
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.textContent = "☰";
+
+        });
+
+      });
+  </script>
+
+</body>
+</html>
