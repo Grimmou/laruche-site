@@ -1,335 +1,1921 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Rencontres Discord : Match & Rencontre | La Ruche</title>
-  <meta name="description" content="Découvrez le système de rencontres Discord de La Ruche : rencontre rapide, questionnaire d'affinités, likes, matchs, discussions privées et profils personnalisés.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://laruche.raphael-etienne68.workers.dev/rencontres.html">
+
+  <meta name="description" content="Découvrez le système Match & Rencontre de La Ruche, une communauté Discord française : Rencontre rapide, Âme sœur, profils, likes, matchs, discussions privées et BUMP.">
+
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="La Ruche">
+
+  <link
+    rel="canonical"
+    href="https://laruche.raphael-etienne68.workers.dev/rencontres.html"
+  >
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Match & Rencontre sur Discord | La Ruche">
-  <meta property="og:description" content="Faites connaissance avec les membres de La Ruche grâce à un système de profils, likes, matchs et discussions privées.">
+  <meta property="og:title" content="Rencontres Discord : Match & Rencontre | La Ruche">
+  <meta property="og:description" content="Fais connaissance avec les membres de La Ruche grâce à un système de rencontres directement intégré au serveur Discord.">
   <meta property="og:url" content="https://laruche.raphael-etienne68.workers.dev/rencontres.html">
+  <meta property="og:site_name" content="La Ruche">
+  <meta property="og:image" content="https://laruche.raphael-etienne68.workers.dev/assets/laruche-logo.png">
+  <meta property="og:locale" content="fr_FR">
+
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="twitter:title" content="Rencontres Discord : Match & Rencontre | La Ruche">
+  <meta name="twitter:description" content="Rencontre de nouvelles personnes sur La Ruche grâce aux profils, likes, matchs et discussions privées.">
+  <meta name="twitter:image" content="https://laruche.raphael-etienne68.workers.dev/assets/laruche-logo.png">
+
+  <!-- SEO : page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Rencontres Discord : Match & Rencontre | La Ruche",
+    "url": "https://laruche.raphael-etienne68.workers.dev/rencontres.html",
+    "inLanguage": "fr-FR",
+    "description": "Présentation du système Match & Rencontre de La Ruche, communauté Discord française."
+  }
+  </script>
+
+  <!-- SEO : FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment fonctionne le système de rencontre sur La Ruche ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les membres peuvent créer un profil, choisir la Rencontre rapide ou le parcours Âme sœur, découvrir d'autres profils, envoyer des likes et discuter dans un espace privé lorsqu'un like est réciproque."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que la Rencontre rapide ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Rencontre rapide permet de créer une présentation et de découvrir simplement les profils des membres intéressés par les rencontres."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que le mode Âme sœur ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le mode Âme sœur ajoute un questionnaire approfondi. Les réponses détaillées restent privées et servent à rechercher des profils pertinents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment fonctionne un match sur La Ruche ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lorsqu'un membre like une personne et que cette personne le like en retour, l'intérêt devient réciproque et un match est créé."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À quoi sert la commande /bump ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La commande /bump permet de remonter une présentation parmi les profils récents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on modifier son profil de rencontre ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Les commandes /modifier et /edit permettent de modifier son profil sans devoir le recréer entièrement."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
-    .encounter-hero{padding:65px 0 45px}
-    .encounter-hero h1{font-size:clamp(46px,7vw,82px);line-height:.94;letter-spacing:-.065em;margin:16px 0 20px;max-width:1000px}
-    .encounter-hero .lead{max-width:850px}
-    .encounter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
-    .encounter-card{min-height:270px}
-    .encounter-card .icon{font-size:25px}
-    .encounter-card h2{font-size:28px;line-height:1.05;letter-spacing:-.04em;margin:18px 0 10px}
-    .encounter-card p{font-size:17px;color:var(--muted);margin:0}
-    .encounter-card .command{display:inline-block;margin-top:20px;padding:7px 10px;border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:9px;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
-    .encounter-highlight{position:relative;overflow:hidden;border:1px solid var(--line2);border-radius:32px;padding:38px;background:linear-gradient(145deg,rgba(255,198,41,.10),rgba(16,19,23,.96))}
-    .encounter-highlight:after{content:"";position:absolute;width:300px;height:300px;right:-130px;bottom:-150px;border:1px solid rgba(255,198,41,.18);border-radius:50%;box-shadow:0 0 0 35px rgba(255,198,41,.035),0 0 0 70px rgba(255,198,41,.02)}
-    .encounter-highlight h2{font-size:clamp(32px,4.5vw,52px);line-height:.98;letter-spacing:-.055em;margin:12px 0}
-    .encounter-highlight p{max-width:760px;color:var(--muted);font-size:18px}
-    .encounter-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .encounter-step{padding:25px;border:1px solid var(--line);background:var(--panel);border-radius:22px}
-    .encounter-step strong{display:block;color:var(--gold);font-size:12px;letter-spacing:.14em;margin-bottom:28px}
-    .encounter-step h3{font-size:20px;margin:0 0 8px}
-    .encounter-step p{color:var(--muted);margin:0}
-    .encounter-note{border-left:3px solid var(--gold);background:rgba(255,198,41,.055);padding:20px 22px;border-radius:0 16px 16px 0;margin:28px 0}
-    @media(max-width:950px){.encounter-grid,.encounter-steps{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.encounter-grid,.encounter-steps{grid-template-columns:1fr}.encounter-hero{padding-top:48px}.encounter-highlight{padding:28px}}
+
+    :root {
+      --bg: #090806;
+      --bg2: #11100c;
+      --card: #17140e;
+      --gold: #f5c542;
+      --gold-light: #ffe28a;
+      --text: #f8f3e7;
+      --muted: #aaa399;
+      --border: rgba(245,197,66,.18);
+      --border-strong: rgba(245,197,66,.32);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(245,197,66,.10),
+          transparent 35%
+        ),
+        var(--bg);
+
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max)
+      );
+
+      margin: auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(9,8,6,.92);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.06);
+    }
+
+    .nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      font-weight: 900;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+
+      display: grid;
+      place-items: center;
+
+      overflow: hidden;
+
+      border-radius: 13px;
+
+      background: var(--gold);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      padding: 4px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+
+      gap: 26px;
+
+      color: #c7c0b3;
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--gold);
+    }
+
+    .discord-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 12px 19px;
+
+      border-radius: 12px;
+
+      background: var(--gold);
+      color: #171207;
+
+      font-weight: 900;
+
+      transition: .2s;
+    }
+
+    .discord-button:hover {
+      transform: translateY(-2px);
+      background: var(--gold-light);
+    }
+
+    .menu-button {
+      display: none;
+
+      border: 0;
+      background: transparent;
+
+      color: white;
+
+      font-size: 27px;
+
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      padding: 10px 20px 20px;
+
+      background: #0b0a08;
+
+      border-top:
+        1px solid rgba(255,255,255,.05);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+
+      padding: 13px 0;
+
+      color: #ddd7ca;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.06);
+    }
+
+
+    /* =========================
+       BREADCRUMB
+    ========================= */
+
+    .breadcrumb {
+      padding-top: 24px;
+
+      color: #8f887d;
+
+      font-size: 13px;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 75px 0 90px;
+
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 9px 16px;
+
+      border:
+        1px solid var(--border-strong);
+
+      border-radius: 999px;
+
+      background:
+        rgba(245,197,66,.05);
+
+      color: var(--gold-light);
+
+      font-weight: 800;
+
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      max-width: 950px;
+
+      margin: auto;
+
+      font-size:
+        clamp(43px, 7vw, 78px);
+
+      line-height: 1.02;
+
+      letter-spacing: -.055em;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 760px;
+
+      margin: 25px auto 0;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+    .hero-logo {
+      width: 150px;
+      height: 150px;
+
+      margin: 42px auto 0;
+
+      padding: 12px;
+
+      border-radius: 34px;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 70px rgba(245,197,66,.15);
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 32px;
+    }
+
+    .secondary-button {
+      display: inline-flex;
+
+      padding: 12px 19px;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.03);
+
+      font-weight: 800;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-title {
+      max-width: 780px;
+
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+
+      text-transform: uppercase;
+
+      letter-spacing: .13em;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size:
+        clamp(32px, 5vw, 52px);
+
+      line-height: 1.05;
+
+      letter-spacing: -.04em;
+
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+
+      font-size: 17px;
+    }
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.15fr .85fr;
+
+      gap: 22px;
+    }
+
+    .main-card {
+      padding: 38px;
+
+      border:
+        1px solid var(--border-strong);
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(245,197,66,.09),
+          rgba(255,255,255,.02)
+        );
+    }
+
+    .main-card h3 {
+      font-size: 32px;
+
+      line-height: 1.1;
+
+      margin-bottom: 15px;
+    }
+
+    .main-card p {
+      color: var(--muted);
+    }
+
+    .feature-list {
+      list-style: none;
+
+      display: grid;
+
+      gap: 13px;
+
+      margin-top: 25px;
+    }
+
+    .feature-list li {
+      display: flex;
+
+      gap: 10px;
+
+      color: #ded7ca;
+    }
+
+    .feature-list span {
+      color: var(--gold);
+
+      font-weight: 900;
+    }
+
+    .side-grid {
+      display: grid;
+
+      gap: 16px;
+    }
+
+    .mini-card {
+      padding: 25px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      background: var(--card);
+    }
+
+    .mini-card h3 {
+      font-size: 20px;
+
+      margin-bottom: 8px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       STEPS
+    ========================= */
+
+    .dark-section {
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(245,197,66,.035),
+          transparent
+        );
+    }
+
+    .steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 16px;
+    }
+
+    .step {
+      padding: 27px;
+
+      border:
+        1px solid rgba(255,255,255,.07);
+
+      border-radius: 20px;
+
+      background: var(--card);
+    }
+
+    .number {
+      color: var(--gold);
+
+      font-size: 13px;
+
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 17px 0 8px;
+
+      font-size: 19px;
+    }
+
+    .step p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .feature-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 17px;
+    }
+
+    .feature {
+      padding: 28px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 22px;
+
+      background: var(--card);
+    }
+
+    .command {
+      display: inline-block;
+
+      padding: 7px 10px;
+
+      margin-bottom: 15px;
+
+      border-radius: 9px;
+
+      background:
+        rgba(245,197,66,.10);
+
+      color: var(--gold-light);
+
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        monospace;
+
+      font-size: 13px;
+
+      font-weight: 800;
+    }
+
+    .feature h3 {
+      font-size: 20px;
+
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       SECURITY
+    ========================= */
+
+    .security {
+      max-width: 850px;
+
+      padding: 32px;
+
+      border:
+        1px solid rgba(255,255,255,.09);
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .security h2 {
+      font-size: 28px;
+
+      margin-bottom: 12px;
+    }
+
+    .security p {
+      color: var(--muted);
+
+      margin-bottom: 12px;
+    }
+
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq {
+      max-width: 880px;
+    }
+
+    .faq-item {
+      padding: 23px 0;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+    }
+
+    .faq-item h3 {
+      font-size: 19px;
+
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 85px 25px;
+
+      text-align: center;
+
+      border:
+        1px solid var(--border-strong);
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(245,197,66,.10),
+          transparent 65%
+        );
+    }
+
+    .cta h2 {
+      font-size:
+        clamp(34px,5vw,55px);
+
+      line-height: 1.05;
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 650px;
+
+      margin: auto;
+
+      color: var(--muted);
+    }
+
+    .cta .discord-button {
+      margin-top: 28px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 40px 0;
+
+      border-top:
+        1px solid rgba(255,255,255,.07);
+
+      color: #827b70;
+
+      font-size: 13px;
+    }
+
+    .footer {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      .desktop-nav,
+      header .discord-button {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+
+      .container {
+        width:
+          min(calc(100% - 28px), var(--max));
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-logo {
+        width: 135px;
+        height: 135px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .main-card {
+        padding: 27px;
+      }
+
+      .main-card h3 {
+        font-size: 28px;
+      }
+
+      .steps,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
   </style>
 </head>
+
+
 <body>
-<a class="skip" href="#contenu">Aller au contenu</a>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="/">
-      <span class="brand-mark logo-mark">
-        <img src="/assets/laruche-logo.png" alt="Logo La Ruche" width="1254" height="1254">
-      </span>
-      <span>LA RUCHE</span>
-    </a>
-    <div class="nav-links">
-      <a href="/">Accueil</a>
-      <a href="/communaute.html">Communauté</a>
-      <a href="/rencontres.html" class="active">Rencontres</a>
-      <a href="/services.html">Services</a>
-      <a href="/conseils.html">Conseils</a>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        class="brand"
+        href="/"
+        aria-label="Accueil La Ruche"
+      >
+
+        <span class="brand-mark">
+
+          <img
+            src="/assets/laruche-logo.png"
+            alt="Logo de La Ruche"
+            width="1254"
+            height="1254"
+          >
+
+        </span>
+
+        <span>LA RUCHE</span>
+
+      </a>
+
+
+      <nav
+        class="desktop-nav"
+        aria-label="Navigation principale"
+      >
+
+        <a href="/">
+          Accueil
+        </a>
+
+        <a href="/#communaute">
+          Communauté
+        </a>
+
+        <a href="/rencontres.html">
+          Rencontres
+        </a>
+
+        <a href="/#services">
+          Services
+        </a>
+
+        <a href="/#conseils">
+          Conseils
+        </a>
+
+      </nav>
+
+
+      <a
+        class="discord-button"
+        href="https://discord.gg/laruche"
+        target="_blank"
+        rel="noopener"
+      >
+        Rejoindre Discord
+      </a>
+
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
     </div>
-    <a class="btn btn-gold nav-cta" data-invite href="https://discord.gg/laruche">Rejoindre Discord</a>
-    <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
-  </div>
-  <div class="mobile-menu" data-mobile-menu>
-    <a href="/">Accueil</a>
-    <a href="/communaute.html">Communauté</a>
-    <a href="/rencontres.html">Rencontres</a>
-    <a href="/services.html">Services Discord</a>
-    <a href="/conseils.html">Conseils</a>
-    <a data-invite href="https://discord.gg/laruche">Rejoindre La Ruche</a>
-  </div>
-</nav>
 
-<main id="contenu">
-  <div class="container breadcrumb">Accueil → Rencontres</div>
 
-  <header class="page-hero encounter-hero">
-    <span class="tag">💛 Match & Rencontre</span>
-    <h1>Faire des rencontres sur Discord, simplement.</h1>
-    <p class="lead">
-      La Ruche propose un système de rencontres intégré à son serveur Discord pour permettre aux membres
-      de se présenter, découvrir des profils, exprimer leurs affinités et ouvrir une discussion lorsqu'un
-      intérêt est réciproque.
-    </p>
-    <div class="actions">
-      <a class="btn btn-gold" data-invite href="https://discord.gg/laruche">💛 Rejoindre La Ruche</a>
-      <a class="btn btn-ghost" href="#fonctionnement">Voir comment ça marche ↓</a>
-    </div>
+    <nav
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-label="Navigation mobile"
+    >
+
+      <a href="/">
+        Accueil
+      </a>
+
+      <a href="/#communaute">
+        Communauté
+      </a>
+
+      <a href="/rencontres.html">
+        Rencontres
+      </a>
+
+      <a href="/#services">
+        Services
+      </a>
+
+      <a href="/#conseils">
+        Conseils
+      </a>
+
+      <a
+        href="https://discord.gg/laruche"
+        target="_blank"
+        rel="noopener"
+      >
+        Rejoindre La Ruche →
+      </a>
+
+    </nav>
+
   </header>
 
-  <section class="section" id="fonctionnement">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag">Le système de rencontre</span>
-        <h2>Un espace pensé pour faire connaissance.</h2>
-        <p>
-          Le système Match & Rencontre de La Ruche complète les échanges classiques d'un serveur Discord.
-          Chaque membre peut choisir ce qu'il souhaite partager, consulter les profils proposés et utiliser
-          les outils de rencontre à son rythme.
-        </p>
-      </div>
 
-      <div class="encounter-highlight">
-        <span class="tag">🎯 Le principe</span>
-        <h2>Présentez-vous. Découvrez. Likez. Matchez. Discutez.</h2>
-        <p>
-          L'objectif est de faciliter les premiers échanges entre membres qui souhaitent faire connaissance.
-          Une présentation peut permettre de découvrir une personne, un questionnaire peut aider à trouver
-          des affinités, et un match réciproque peut ouvrir une discussion privée entre les deux membres.
-        </p>
-      </div>
+  <main>
+
+
+    <!-- =========================
+         BREADCRUMB
+    ========================= -->
+
+    <div class="container breadcrumb">
+
+      <a href="/">
+        Accueil
+      </a>
+
+      →
+
+      Rencontres
+
     </div>
-  </section>
 
-  <section class="section dark">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag">Fonctionnalités</span>
-        <h2>Tout le parcours de rencontre, au même endroit.</h2>
-        <p>
-          Le serveur rassemble plusieurs outils pour créer un parcours de rencontre clair : présentation,
-          affinités, likes, matchs, discussions privées et modification du profil.
-        </p>
-      </div>
 
-      <div class="encounter-grid">
-        <article class="card encounter-card">
-          <div class="icon">💛</div>
-          <h2>Rencontre rapide</h2>
-          <p>
-            Crée une présentation pour permettre aux autres membres de découvrir rapidement qui tu es,
-            tes centres d'intérêt et ce que tu recherches dans tes échanges.
-          </p>
-        </article>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-        <article class="card encounter-card">
-          <div class="icon">💫</div>
-          <h2>Âme sœur</h2>
-          <p>
-            Réponds à un questionnaire plus approfondi afin de préciser tes affinités. Le système peut
-            ensuite proposer des profils compatibles selon les réponses renseignées.
-          </p>
-        </article>
+    <section class="hero">
 
-        <article class="card encounter-card">
-          <div class="icon">❤️</div>
-          <h2>Likes</h2>
-          <p>
-            Tu peux signaler ton intérêt pour un profil sans avoir besoin de lancer immédiatement une
-            conversation. Les membres qui t'ont aimé peuvent être retrouvés grâce à la commande dédiée.
-          </p>
-          <span class="command">/like</span>
-        </article>
+      <div class="container">
 
-        <article class="card encounter-card">
-          <div class="icon">🤝</div>
-          <h2>Matchs</h2>
-          <p>
-            Lorsqu'un intérêt est réciproque, un match est créé. Cela permet de passer de la découverte
-            du profil à une prise de contact entre les deux membres.
-          </p>
-        </article>
-
-        <article class="card encounter-card">
-          <div class="icon">💬</div>
-          <h2>Discussions privées</h2>
-          <p>
-            Les salons de match sont conçus pour être visibles uniquement par les deux membres concernés,
-            afin de faciliter une conversation plus directe et plus discrète.
-          </p>
-        </article>
-
-        <article class="card encounter-card">
-          <div class="icon">🔄</div>
-          <h2>BUMP</h2>
-          <p>
-            Après le délai prévu par le serveur, la commande BUMP permet de remettre une présentation
-            en avant pour augmenter ses chances d'être découverte par de nouveaux membres.
-          </p>
-          <span class="command">/bump</span>
-        </article>
-
-        <article class="card encounter-card">
-          <div class="icon">📝</div>
-          <h2>Modifier son profil</h2>
-          <p>
-            Les informations d'un profil peuvent être actualisées sans devoir recréer toute sa fiche.
-            Utilise les commandes prévues par le système pour modifier ta présentation.
-          </p>
-          <span class="command">/modifier</span>
-          <span class="command">/edit</span>
-        </article>
-
-        <article class="card encounter-card">
-          <div class="icon">🐝</div>
-          <h2>Une rencontre à ton rythme</h2>
-          <p>
-            Rien ne t'oblige à participer à toutes les fonctionnalités. Tu peux simplement découvrir
-            les profils, discuter dans la communauté ou utiliser le système de rencontre quand tu en as envie.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag">Comment ça fonctionne ?</span>
-        <h2>De la présentation au match.</h2>
-        <p>
-          Le parcours est conçu pour rester simple : chaque étape apporte une nouvelle possibilité de
-          faire connaissance sans rendre l'utilisation du serveur compliquée.
-        </p>
-      </div>
-
-      <div class="encounter-steps">
-        <article class="encounter-step">
-          <strong>01</strong>
-          <h3>Crée ton profil</h3>
-          <p>Présente-toi et renseigne les informations que tu souhaites partager avec les autres membres.</p>
-        </article>
-        <article class="encounter-step">
-          <strong>02</strong>
-          <h3>Découvre les profils</h3>
-          <p>Consulte les présentations et, si tu le souhaites, utilise le questionnaire d'affinités.</p>
-        </article>
-        <article class="encounter-step">
-          <strong>03</strong>
-          <h3>Exprime ton intérêt</h3>
-          <p>Un like permet de signaler discrètement ton intérêt pour un autre membre.</p>
-        </article>
-        <article class="encounter-step">
-          <strong>04</strong>
-          <h3>Discutez</h3>
-          <p>En cas d'intérêt réciproque, un match permet d'ouvrir la voie à une discussion entre vous.</p>
-        </article>
-      </div>
-
-      <div class="encounter-note">
-        <strong>💡 À retenir :</strong>
-        le système de rencontre est un outil pour faciliter les premiers contacts. Les échanges restent
-        basés sur le respect, le consentement et la volonté de chacun de poursuivre ou non une conversation.
-      </div>
-    </div>
-  </section>
-
-  <section class="section dark">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag">Questions fréquentes</span>
-        <h2>Tout savoir sur les rencontres Discord de La Ruche.</h2>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>Faut-il utiliser le système de rencontre pour participer à La Ruche ?</summary>
-          <p>Non. Le système Match & Rencontre est une fonctionnalité du serveur. Tu peux participer à la communauté, discuter et jouer sans créer de profil de rencontre.</p>
-        </details>
-        <details>
-          <summary>Comment fonctionne un match ?</summary>
-          <p>Un match intervient lorsqu'un intérêt est réciproque. Le système peut alors permettre aux deux membres concernés d'accéder à une discussion dédiée.</p>
-        </details>
-        <details>
-          <summary>À quoi sert le questionnaire « Âme sœur » ?</summary>
-          <p>Il sert à recueillir davantage d'informations sur les goûts et préférences renseignés par un membre afin de proposer des profils présentant des affinités.</p>
-        </details>
-        <details>
-          <summary>Peut-on modifier son profil ?</summary>
-          <p>Oui. Les commandes prévues par le système permettent de modifier les informations d'un profil sans devoir recommencer toute la démarche.</p>
-        </details>
-        <details>
-          <summary>Les discussions de match sont-elles publiques ?</summary>
-          <p>Le fonctionnement prévu par La Ruche limite la visibilité des salons de match aux deux membres concernés.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="container">
-      <div class="cta-box reveal">
-        <div>
-          <h2>Envie de faire connaissance ?</h2>
-          <p>Rejoins La Ruche et découvre la communauté, les profils et le système Match & Rencontre.</p>
+        <div class="badge">
+          💛 Match & Rencontre
         </div>
-        <a class="btn" data-invite href="https://discord.gg/laruche">Rejoindre La Ruche →</a>
-        <div class="cta-pattern"></div>
+
+
+        <h1>
+
+          Faire des rencontres sur
+          <span>Discord</span>,
+          simplement.
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          La Ruche propose un système de rencontres intégré à son
+          serveur Discord pour permettre aux membres de se présenter,
+          découvrir des profils, exprimer leurs affinités et ouvrir
+          une discussion lorsqu'un intérêt est réciproque.
+
+        </p>
+
+
+        <div class="hero-logo">
+
+          <img
+            src="/assets/laruche-logo.png"
+            alt="Logo La Ruche — communauté Discord française et rencontres"
+            width="1254"
+            height="1254"
+          >
+
+        </div>
+
+
+        <div class="hero-buttons">
+
+          <a
+            class="discord-button"
+            href="https://discord.gg/laruche"
+            target="_blank"
+            rel="noopener"
+          >
+            💛 Rejoindre La Ruche
+          </a>
+
+
+          <a
+            class="secondary-button"
+            href="#fonctionnement"
+          >
+            Voir comment ça marche ↓
+          </a>
+
+        </div>
+
       </div>
-    </div>
-  </section>
-</main>
 
-<footer>
-  <div class="container footer-inner">
-    <div>
-      <div class="footer-brand">🐝 La Ruche</div>
-      <div>Communauté & services Discord.</div>
-    </div>
-    <div class="footer-links">
-      <a href="/communaute.html">Communauté</a>
-      <a href="/rencontres.html">Rencontres</a>
-      <a href="/services.html">Services</a>
-      <a href="/conseils.html">Conseils</a>
-      <a data-invite href="https://discord.gg/laruche">Discord</a>
-    </div>
-    <div>© <span data-year></span> La Ruche.</div>
-  </div>
-</footer>
+    </section>
 
-<script src="/script.js"></script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebPage",
-  "name":"Match & Rencontre sur Discord | La Ruche",
-  "url":"https://laruche.raphael-etienne68.workers.dev/rencontres.html",
-  "inLanguage":"fr-FR",
-  "description":"Système de rencontres Discord de La Ruche avec profils, likes, matchs, discussions privées et questionnaire d'affinités.",
-  "isPartOf":{"@type":"WebSite","name":"La Ruche","url":"https://laruche.raphael-etienne68.workers.dev/"}
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Faut-il utiliser le système de rencontre pour participer à La Ruche ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le système Match & Rencontre est une fonctionnalité du serveur. Tu peux participer à la communauté, discuter et jouer sans créer de profil de rencontre."}},
-    {"@type":"Question","name":"Comment fonctionne un match ?","acceptedAnswer":{"@type":"Answer","text":"Un match intervient lorsqu'un intérêt est réciproque et peut permettre aux deux membres concernés d'accéder à une discussion dédiée."}},
-    {"@type":"Question","name":"À quoi sert le questionnaire Âme sœur ?","acceptedAnswer":{"@type":"Answer","text":"Il recueille davantage d'informations sur les goûts et préférences renseignés par un membre afin de proposer des profils présentant des affinités."}},
-    {"@type":"Question","name":"Peut-on modifier son profil ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les commandes prévues par le système permettent de modifier les informations d'un profil."}},
-    {"@type":"Question","name":"Les discussions de match sont-elles publiques ?","acceptedAnswer":{"@type":"Answer","text":"Le fonctionnement prévu par La Ruche limite la visibilité des salons de match aux deux membres concernés."}}
-  ]
-}
-</script>
+
+    <!-- =========================
+         INTRO
+    ========================= -->
+
+    <section id="fonctionnement">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="eyebrow">
+            Le système de rencontre
+          </div>
+
+          <h2>
+            Un espace pensé pour faire connaissance.
+          </h2>
+
+          <p>
+
+            Le système Match & Rencontre de La Ruche complète les
+            échanges classiques d'un serveur Discord. Chaque membre
+            peut choisir ce qu'il souhaite partager, consulter les
+            profils proposés et utiliser les outils de rencontre
+            à son rythme.
+
+          </p>
+
+        </div>
+
+
+        <div class="intro-grid">
+
+
+          <article class="main-card">
+
+            <h3>
+              🐝 Deux façons de faire connaissance
+            </h3>
+
+            <p>
+
+              Le serveur propose deux parcours complémentaires.
+              La Rencontre rapide permet de faire connaissance
+              simplement grâce à une présentation.
+
+              Le parcours Âme sœur va plus loin avec un questionnaire
+              approfondi dont les réponses restent privées.
+
+            </p>
+
+
+            <ul class="feature-list">
+
+              <li>
+                <span>✓</span>
+                Une présentation publique pour te présenter.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Un catalogue de profils à découvrir.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Des likes pour exprimer ton intérêt.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Des matchs lorsque l'intérêt est réciproque.
+              </li>
+
+              <li>
+                <span>✓</span>
+                Une discussion privée après un match.
+              </li>
+
+            </ul>
+
+          </article>
+
+
+          <div class="side-grid">
+
+
+            <article class="mini-card">
+
+              <h3>
+                💛 Rencontre rapide
+              </h3>
+
+              <p>
+
+                Une formule simple pour créer ton profil,
+                te présenter et découvrir les membres qui
+                participent au système de rencontre.
+
+              </p>
+
+            </article>
+
+
+            <article class="mini-card">
+
+              <h3>
+                💫 Âme sœur
+              </h3>
+
+              <p>
+
+                Un questionnaire plus approfondi aide La Ruche
+                à rechercher des profils pertinents selon les
+                réponses fournies.
+
+              </p>
+
+            </article>
+
+
+            <article class="mini-card">
+
+              <h3>
+                ❤️ Likes & Matchs
+              </h3>
+
+              <p>
+
+                Un like peut devenir un match lorsque l'intérêt
+                est partagé par les deux membres.
+
+              </p>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ÉTAPES
+    ========================= -->
+
+    <section class="dark-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="eyebrow">
+            Comment ça fonctionne
+          </div>
+
+          <h2>
+            De ton profil à la discussion privée.
+          </h2>
+
+          <p>
+
+            Le parcours est conçu pour rester simple :
+            tu crées ton profil, tu découvres des personnes,
+            tu exprimes ton intérêt et, si celui-ci est
+            réciproque, vous pouvez commencer à discuter.
+
+          </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+          <article class="step">
+
+            <div class="number">
+              01
+            </div>
+
+            <h3>
+              Créer ton profil
+            </h3>
+
+            <p>
+
+              Présente-toi avec les informations que tu souhaites
+              partager et crée ta présentation publique sur La Ruche.
+
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="number">
+              02
+            </div>
+
+            <h3>
+              Découvrir
+            </h3>
+
+            <p>
+
+              Consulte les profils disponibles et découvre les
+              membres qui participent au système de rencontre.
+
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="number">
+              03
+            </div>
+
+            <h3>
+              Liker
+            </h3>
+
+            <p>
+
+              Si un profil t'intéresse, tu peux envoyer un like.
+              La personne peut ensuite décider si elle souhaite
+              liker en retour.
+
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="number">
+              04
+            </div>
+
+            <h3>
+              Matcher & discuter
+            </h3>
+
+            <p>
+
+              Lorsque l'intérêt est réciproque, un match est créé
+              et un espace privé peut être ouvert pour faire
+              connaissance.
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FONCTIONNALITÉS
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="eyebrow">
+            Les fonctionnalités
+          </div>
+
+          <h2>
+            Les outils de Match & Rencontre.
+          </h2>
+
+          <p>
+
+            Le système rassemble plusieurs fonctionnalités
+            directement accessibles depuis le serveur Discord
+            de La Ruche.
+
+          </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+          <article class="feature">
+
+            <span class="command">
+              Rencontre rapide
+            </span>
+
+            <h3>
+              💛 Une présentation simple
+            </h3>
+
+            <p>
+
+              Crée une présentation publique et utilise-la
+              pour commencer à faire connaissance avec d'autres
+              membres.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              Âme sœur
+            </span>
+
+            <h3>
+              💫 Un questionnaire approfondi
+            </h3>
+
+            <p>
+
+              Réponds à des questions plus détaillées.
+              Les réponses restent privées et peuvent être
+              utilisées pour rechercher des profils pertinents.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              /like
+            </span>
+
+            <h3>
+              ❤️ Les likes
+            </h3>
+
+            <p>
+
+              Exprime ton intérêt pour un profil.
+              Si la personne t'apprécie également,
+              votre intérêt devient réciproque.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              Match
+            </span>
+
+            <h3>
+              🤝 Une rencontre réciproque
+            </h3>
+
+            <p>
+
+              Un match apparaît lorsque deux membres
+              se sont mutuellement likés.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              Discussion privée
+            </span>
+
+            <h3>
+              💬 Un espace à deux
+            </h3>
+
+            <p>
+
+              Après un match, un salon privé peut être créé
+              pour permettre aux deux membres de discuter
+              tranquillement.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              /bump
+            </span>
+
+            <h3>
+              🔄 Remonter son profil
+            </h3>
+
+            <p>
+
+              Le BUMP permet de remonter une présentation
+              parmi les profils récents. Le système prévoit
+              un délai de 24 heures entre deux utilisations.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              /modifier
+            </span>
+
+            <h3>
+              📝 Modifier son profil
+            </h3>
+
+            <p>
+
+              Mets à jour ta présentation sans devoir
+              recréer entièrement ton profil de rencontre.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              /edit
+            </span>
+
+            <h3>
+              ✏️ Modifier rapidement
+            </h3>
+
+            <p>
+
+              La commande /edit permet également d'accéder
+              à la modification de ton profil.
+
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="command">
+              Likes reçus
+            </span>
+
+            <h3>
+              ❤️ Découvrir qui t'apprécie
+            </h3>
+
+            <p>
+
+              Consulte les personnes qui t'ont envoyé un like
+              et décide ensuite si tu souhaites exprimer ton
+              intérêt en retour.
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESPECT
+    ========================= -->
+
+    <section class="dark-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="eyebrow">
+            Rencontre & respect
+          </div>
+
+          <h2>
+            Faire connaissance à son rythme.
+          </h2>
+
+        </div>
+
+
+        <div class="security">
+
+          <h2>
+            🐝 Fais connaissance simplement.
+          </h2>
+
+          <p>
+
+            Un profil de rencontre doit permettre de partager
+            uniquement les informations que l'on souhaite rendre
+            publiques.
+
+          </p>
+
+          <p>
+
+            Il n'est jamais nécessaire de communiquer des
+            informations personnelles que l'on préfère garder
+            privées.
+
+          </p>
+
+          <p>
+
+            Lorsqu'un match est créé, les deux membres peuvent
+            prendre le temps de discuter et décider eux-mêmes
+            de la suite de leur rencontre.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <div class="eyebrow">
+            Questions fréquentes
+          </div>
+
+          <h2>
+            Tout savoir sur les rencontres Discord de La Ruche.
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+
+          <article class="faq-item">
+
+            <h3>
+              Comment fonctionne le système de rencontre sur La Ruche ?
+            </h3>
+
+            <p>
+
+              Tu peux créer un profil, choisir la Rencontre rapide
+              ou le parcours Âme sœur, découvrir d'autres profils,
+              envoyer des likes et discuter en privé lorsqu'un
+              like est réciproque.
+
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Qu'est-ce que la Rencontre rapide ?
+            </h3>
+
+            <p>
+
+              La Rencontre rapide permet de créer une présentation
+              et de découvrir simplement les profils des membres
+              participant aux rencontres.
+
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Qu'est-ce que le mode Âme sœur ?
+            </h3>
+
+            <p>
+
+              Le mode Âme sœur ajoute un questionnaire approfondi
+              à la présentation. Les réponses détaillées restent
+              privées et servent à rechercher des profils pertinents.
+
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Comment obtenir un match sur Discord ?
+            </h3>
+
+            <p>
+
+              Un match est créé lorsque deux membres se sont
+              mutuellement likés. Ils peuvent ensuite accéder
+              à un espace de discussion privé prévu pour leur
+              rencontre.
+
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              À quoi sert /bump ?
+            </h3>
+
+            <p>
+
+              /bump permet de remonter une présentation parmi
+              les profils récents. Le système impose ensuite
+              un délai avant une nouvelle utilisation.
+
+            </p>
+
+          </article>
+
+
+          <article class="faq-item">
+
+            <h3>
+              Peut-on modifier son profil de rencontre ?
+            </h3>
+
+            <p>
+
+              Oui. Les commandes /modifier et /edit permettent
+              de modifier son profil sans devoir le recréer
+              entièrement.
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="cta">
+
+          <h2>
+            Prêt à faire connaissance ? 🐝
+          </h2>
+
+          <p>
+
+            Rejoins La Ruche et découvre une communauté Discord
+            française où les discussions, les rencontres, les jeux
+            et les activités communautaires se retrouvent au même
+            endroit.
+
+          </p>
+
+
+          <a
+            class="discord-button"
+            href="https://discord.gg/laruche"
+            target="_blank"
+            rel="noopener"
+          >
+            Rejoindre La Ruche
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer">
+
+      <div>
+        © 2026 La Ruche — Communauté Discord française
+      </div>
+
+      <div>
+        Communauté · Rencontres · Services Discord
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       MENU MOBILE
+  ========================= -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuButton.addEventListener("click", () => {
+
+      const open =
+        mobileMenu.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+      menuButton.textContent =
+        open ? "✕" : "☰";
+
+    });
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.textContent = "☰";
+
+        });
+
+      });
+
+  </script>
+
+
 </body>
 </html>
